@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarot Express</title>
   <style>
     body {
@@ -27,32 +27,32 @@
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
     h1 {
-      font-size: 2rem;
       font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
     }
     p {
-      margin: 0.5rem 0;
       font-size: 1rem;
+      margin: 0.5rem 0;
     }
     input {
       width: 100%;
       padding: 0.8rem;
-      font-size: 1rem;
       border: none;
       border-radius: 5px;
       margin-top: 1rem;
-    }
-    .button {
-      display: block;
-      width: 100%;
-      margin-top: 1.5rem;
-      padding: 0.8rem;
       font-size: 1rem;
-      background-color: #00b894;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 10px 20px;
+      background: #00b894;
       color: white;
       border: none;
       border-radius: 5px;
+      font-size: 1rem;
       cursor: pointer;
+      width: 100%;
     }
   </style>
 </head>
@@ -63,12 +63,18 @@
     <p>🔮 Tiragem com 3 cartas</p>
     <p>📩 Interpretação escrita via WhatsApp</p>
     <p>🎁 Carta bônus com conselho final</p>
-    <p>⏱️ Entrega em até <strong>20 minutos</strong></p>
+    <p>⏱ Entrega em até <strong>20 minutos</strong></p>
 
-    <form name="contact" id="contact-form" netlify>
+    <form id="contact-form" name="contact" netlify>
       <input type="hidden" name="form-name" value="contact" />
-      <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required />
-      <button type="submit" class="button">QUERO A RESPOSTA AGORA</button>
+      <input
+        type="tel"
+        name="whatsapp"
+        placeholder="Seu WhatsApp com DDD"
+        required
+        style="margin-top: 10px"
+      />
+      <button type="submit">QUERO A RESPOSTA AGORA</button>
     </form>
   </div>
 
@@ -86,12 +92,9 @@
         body: new URLSearchParams(formData).toString(),
       })
       .then(() => {
-        // Redirecionamento direto para o link oficial do checkout
         window.location.href = "https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1";
       })
-      .catch(() => {
-        alert("Erro ao enviar. Tente novamente.");
-      });
+      .catch(() => alert("Erro ao enviar. Tente novamente."));
     });
   </script>
 </body>
