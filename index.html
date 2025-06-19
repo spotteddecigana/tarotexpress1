@@ -72,20 +72,31 @@
     <p>🎁 Carta bônus com conselho final</p>
     <p>⏱️ Entrega em até <strong>20 minutos</strong></p>
 
-  <form name="contact" method="POST" data-netlify="true" action="https://mpago.li/1YrSsQ4">
+ <form name="contact" method="POST" data-netlify="true" onsubmit="redirectToPayment()">
+  <input type="hidden" name="form-name" value="contact">
+
   <input 
-    type="tel" 
-    name="whatsapp" 
-    placeholder="Seu WhatsApp com DDD" 
-    required 
-    style="padding: 10px; font-size: 16px; width: 100%; max-width: 300px; margin-bottom: 15px;">
-  
-  <button 
+    type="tel"
+    name="whatsapp"
+    placeholder="Seu WhatsApp com DDD"
+    required
+    style="padding: 10px; font-size: 16px; width: 100%; max-width: 300px; margin-bottom: 15px;"
+  >
+  <button
     type="submit"
     style="background-color: #6b46c1; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">
     QUERO A RESPOSTA AGORA
   </button>
 </form>
+
+<script>
+  function redirectToPayment() {
+    setTimeout(function () {
+      window.location.href = "https://mpago.li/1YrSsQ4";
+    }, 1000); // 1 segundo de espera para garantir envio ao Netlify
+  }
+</script>
+
 
 
     <p style="margin-top: 2rem;">Depois de enviar seu número, clique no botão abaixo para pagar:</p>
