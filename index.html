@@ -65,37 +65,12 @@
     <p>🎁 Carta bônus com conselho final</p>
     <p>⏱ Entrega em até <strong>20 minutos</strong></p>
 
-    <form id="contact-form" name="contact" netlify>
-      <input type="hidden" name="form-name" value="contact" />
-      <input
-        type="tel"
-        name="whatsapp"
-        placeholder="Seu WhatsApp com DDD"
-        required
-        style="margin-top: 10px"
-      />
+    <form id="payment-form" method="GET" action="https://www.mercadopago.com.br/checkout/v1/redirect">
+      <input type="tel" name="whatsapp" id="whatsapp" placeholder="Seu WhatsApp com DDD" required />
+      <!-- Hidden field com ID de pagamento já incluso na URL do Mercado Pago -->
+      <input type="hidden" name="preference-id" value="227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1" />
       <button type="submit">QUERO A RESPOSTA AGORA</button>
     </form>
   </div>
-
-  <script>
-    const form = document.getElementById("contact-form");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-      .then(() => {
-        window.location.href = "https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1";
-      })
-      .catch(() => alert("Erro ao enviar. Tente novamente."));
-    });
-  </script>
 </body>
 </html>
