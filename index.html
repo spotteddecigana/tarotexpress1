@@ -103,7 +103,9 @@
         body: new URLSearchParams(formData).toString(),
       })
       .then(() => {
-        window.location.href = "https://mpago.li/1YrSsQ4";
+        <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+data-preference-id="227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1" data-source="button">
+</script>
       })
       .catch((error) => alert("Erro ao enviar. Tente novamente."));
     });
