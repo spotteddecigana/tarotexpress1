@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Tarot Express</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       margin: 0;
@@ -42,24 +41,17 @@
       border-radius: 5px;
       margin-top: 1rem;
       font-size: 1rem;
+      color: black;
     }
-    .submit-button, .pay-button {
+    button {
       margin-top: 1.5rem;
       padding: 10px 20px;
-      background: #009ee3;
+      background: #6b46c1;
       color: white;
       border: none;
       border-radius: 5px;
       font-size: 1rem;
       cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-    .sigilo {
-      margin-top: 2rem;
-      font-weight: bold;
-      font-size: 1.1rem;
-      opacity: 0.85;
     }
   </style>
 </head>
@@ -73,7 +65,7 @@
     <p>⏱️ Entrega em até <strong>20 minutos</strong></p>
 
     <form name="contact" id="contact-form">
-      <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="form-name" value="contact" />
       <input
         type="tel"
         name="whatsapp"
@@ -81,11 +73,7 @@
         required
         style="padding: 10px; font-size: 16px; width: 100%; max-width: 300px; margin-bottom: 15px;"
       />
-      <button
-        type="submit"
-        style="background-color: #6b46c1; color: white; border: none; padding: 10px 20px; font-size: 16px; cursor: pointer;">
-        QUERO A RESPOSTA AGORA
-      </button>
+      <button type="submit">QUERO A RESPOSTA AGORA</button>
     </form>
   </div>
 
@@ -103,14 +91,12 @@
         body: new URLSearchParams(formData).toString(),
       })
       .then(() => {
-        <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
-data-preference-id="227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1" data-source="button">
-</script>
+        window.location.href = "https://mpago.li/1YrSsQ4";
       })
-      .catch((error) => alert("Erro ao enviar. Tente novamente."));
+      .catch((error) => {
+        alert("Erro ao enviar. Tente novamente.");
+      });
     });
   </script>
-
 </body>
 </html>
-
