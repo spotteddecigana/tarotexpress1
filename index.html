@@ -49,6 +49,7 @@
     }
     .mp-wrapper {
       margin-top: 2rem;
+      display: none;
     }
   </style>
 </head>
@@ -61,13 +62,46 @@
     <p>🎁 Bônus: conselho final especial</p>
     <p>⏱ Em até <strong>20 minutos</strong></p>
 
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="wpp-form">
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="timestamp" id="timestamp" />
       <p style="display:none"><input name="bot-field" /></p>
       <input type="tel" name="whatsapp" required placeholder="Seu WhatsApp com DDD" />
-      <button type="submit">ENVIAR WHATSAPP</button>
+      <button type="submit" id="submit-btn">ENVIAR WHATSAPP</button>
     </form>
 
-    <div class="mp-wrapper">
-      <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-chec
+    <div class="mp-wrapper" id="mp-button">
+      <p><strong>Pagamento liberado! Clique abaixo para continuar:</strong></p>
+      <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+        data-preference-id="227849621-b8c7ac2a-f820-4964-80c0-8bf7d561ee1a"
+        data-source="button">
+      </script>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("timestamp").value = new Date().toISOString();
+
+    const form = document.getElementById("wpp-form");
+    const submitBtn = document.getElementById("submit-btn");
+    const mpButton = document.getElementById("mp-button");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      })
+      .then(() => {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "WhatsApp enviado!";
+        mpButton.style.display = "block";
+      })
+      .catch(() => alert("Erro ao enviar. Tente novamente."));
+    });
+  </script>
+</body>
+</html>
