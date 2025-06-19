@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -49,10 +50,6 @@
       color: white;
       cursor: pointer;
     }
-    #redirect-msg {
-      display: none;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -64,43 +61,19 @@
     <p>🎁 Carta bônus com conselho final</p>
     <p>⏱ Entrega em até <strong>20 minutos</strong></p>
 
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="form">
-      <input type="hidden" name="form-name" value="contact">
+    <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="hidden" name="timestamp" id="timestamp" />
       <p style="display:none">
-        <label>Não preencha: <input name="bot-field" /></label>
+        <label>Não preencher: <input name="bot-field" /></label>
       </p>
-      <input type="tel" name="whatsapp" id="whatsapp" placeholder="Seu WhatsApp com DDD" required />
+      <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required />
       <button type="submit">QUERO A RESPOSTA AGORA</button>
     </form>
-
-    <div id="redirect-msg">
-      <p>Enviando para o pagamento...</p>
-    </div>
   </div>
 
   <script>
-    const form = document.getElementById("form");
-    const redirectMsg = document.getElementById("redirect-msg");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-      .then(() => {
-        form.style.display = "none";
-        redirectMsg.style.display = "block";
-        setTimeout(() => {
-          window.location.href = "https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1";
-        }, 1000);
-      })
-      .catch(() => alert("Erro ao enviar. Tente novamente."));
-    });
+    document.getElementById("timestamp").value = new Date().toISOString();
   </script>
 </body>
 </html>
