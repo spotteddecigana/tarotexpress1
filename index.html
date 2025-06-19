@@ -49,7 +49,6 @@
     }
     .mp-wrapper {
       margin-top: 2rem;
-      display: none;
     }
   </style>
 </head>
@@ -70,12 +69,19 @@
       <button type="submit" id="submit-btn">ENVIAR WHATSAPP</button>
     </form>
 
-    <div class="mp-wrapper" id="mp-button">
-      <p><strong>Pagamento liberado! Clique abaixo para continuar:</strong></p>
-      <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
-        data-preference-id="227849621-b8c7ac2a-f820-4964-80c0-8bf7d561ee1a"
-        data-source="button">
-      </script>
+    <div class="mp-wrapper" id="mp-button" style="display:none;">
+      <p><strong>Pagamento seguro com Nubank:</strong></p>
+      <a href="https://checkout.nubank.com.br/y2CaFZvgKwb1ws94" target="_blank" style="
+        display: inline-block;
+        padding: 0.8rem 1.2rem;
+        background: #8a05be;
+        color: white;
+        font-size: 1rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;">
+        Pagar com Nubank
+      </a>
     </div>
   </div>
 
