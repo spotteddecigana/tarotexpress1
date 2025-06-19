@@ -9,27 +9,24 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #4b0082, #8a2be2, #dda0dd);
       color: white;
       text-align: center;
-      min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
     .container {
       background: rgba(0, 0, 0, 0.6);
       padding: 2rem;
-      border-radius: 10px;
-      width: 90%;
+      border-radius: 12px;
       max-width: 400px;
+      width: 90%;
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
     }
     h1 {
-      font-weight: bold;
       font-size: 2rem;
       margin-bottom: 0.5rem;
     }
@@ -40,40 +37,37 @@
     input, button {
       width: 100%;
       padding: 0.8rem;
+      font-size: 1rem;
       border: none;
       border-radius: 5px;
       margin-top: 1rem;
-      font-size: 1rem;
     }
     button {
       background: #00b894;
       color: white;
       cursor: pointer;
     }
+    .mp-wrapper {
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Tarot Express</h1>
-    <p><strong>Envie sua pergunta agora e tenha a resposta!</strong></p>
+    <p><strong>Receba sua leitura personalizada agora!</strong></p>
     <p>🔮 Tiragem com 3 cartas</p>
-    <p>📩 Interpretação escrita via WhatsApp</p>
-    <p>🎁 Carta bônus com conselho final</p>
-    <p>⏱ Entrega em até <strong>20 minutos</strong></p>
+    <p>📩 Entrega via WhatsApp</p>
+    <p>🎁 Bônus: conselho final especial</p>
+    <p>⏱ Em até <strong>20 minutos</strong></p>
 
-    <form name="contact" method="POST" data-netlify="true" action="/thank-you.html" netlify-honeypot="bot-field">
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="timestamp" id="timestamp" />
-      <p style="display:none">
-        <label>Não preencher: <input name="bot-field" /></label>
-      </p>
-      <input type="tel" name="whatsapp" placeholder="Seu WhatsApp com DDD" required />
-      <button type="submit">QUERO A RESPOSTA AGORA</button>
+      <p style="display:none"><input name="bot-field" /></p>
+      <input type="tel" name="whatsapp" required placeholder="Seu WhatsApp com DDD" />
+      <button type="submit">ENVIAR WHATSAPP</button>
     </form>
-  </div>
 
-  <script>
-    document.getElementById("timestamp").value = new Date().toISOString();
-  </script>
-</body>
-</html>
+    <div class="mp-wrapper">
+      <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-chec
