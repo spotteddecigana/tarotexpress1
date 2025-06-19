@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarot Express</title>
   <style>
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -43,12 +48,13 @@
       margin-top: 1rem;
     }
     button {
-      background: #00b894;
+      background: #00cba9;
       color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
       cursor: pointer;
-    }
-    .mp-wrapper {
-      margin-top: 2rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+      animation: pulse 1.5s infinite;
     }
   </style>
 </head>
@@ -66,23 +72,8 @@
       <input type="hidden" name="timestamp" id="timestamp" />
       <p style="display:none"><input name="bot-field" /></p>
       <input type="tel" name="whatsapp" required placeholder="Seu WhatsApp com DDD" />
-      <button type="submit" id="submit-btn">ENVIAR WHATSAPP</button>
+      <button type="submit" id="submit-btn">📩 RECEBA A RESPOSTA AGORA</button>
     </form>
-
-    <div class="mp-wrapper" id="mp-button" style="display:none;">
-      <p><strong>Pagamento seguro com Nubank:</strong></p>
-      <a href="https://checkout.nubank.com.br/y2CaFZvgKwb1ws94" target="_blank" style="
-        display: inline-block;
-        padding: 0.8rem 1.2rem;
-        background: #8a05be;
-        color: white;
-        font-size: 1rem;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: bold;">
-        Pagar com Nubank
-      </a>
-    </div>
   </div>
 
   <script>
@@ -90,7 +81,6 @@
 
     const form = document.getElementById("wpp-form");
     const submitBtn = document.getElementById("submit-btn");
-    const mpButton = document.getElementById("mp-button");
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -102,9 +92,7 @@
         body: new URLSearchParams(formData).toString(),
       })
       .then(() => {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "WhatsApp enviado!";
-        mpButton.style.display = "block";
+        window.location.href = "https://checkout.nubank.com.br/y2CaFZvgKwb1ws94";
       })
       .catch(() => alert("Erro ao enviar. Tente novamente."));
     });
