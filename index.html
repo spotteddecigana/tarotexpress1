@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Tarot Express</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       margin: 0;
@@ -41,9 +41,8 @@
       border-radius: 5px;
       margin-top: 1rem;
       font-size: 1rem;
-      color: black;
     }
-    button {
+    .submit-button, .pay-button {
       margin-top: 1.5rem;
       padding: 10px 20px;
       background: #6b46c1;
@@ -52,6 +51,11 @@
       border-radius: 5px;
       font-size: 1rem;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .pay-button {
+      background: #009ee3;
     }
   </style>
 </head>
@@ -64,8 +68,9 @@
     <p>🎁 Carta bônus com conselho final</p>
     <p>⏱️ Entrega em até <strong>20 minutos</strong></p>
 
-    <form name="contact" id="contact-form">
-      <input type="hidden" name="form-name" value="contact" />
+    <!-- Formulário NETLIFY -->
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact">
       <input
         type="tel"
         name="whatsapp"
@@ -73,30 +78,13 @@
         required
         style="padding: 10px; font-size: 16px; width: 100%; max-width: 300px; margin-bottom: 15px;"
       />
-      <button type="submit">QUERO A RESPOSTA AGORA</button>
+      <button type="submit" class="submit-button">ENVIAR NÚMERO</button>
     </form>
+
+    <!-- Botão Mercado Pago separado -->
+    <a href="https://mpago.li/1YrSsQ4" target="_blank" class="pay-button">
+      QUERO A RESPOSTA AGORA
+    </a>
   </div>
-
-  <script>
-    const form = document.getElementById("contact-form");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      })
-      .then(() => {
-        window.location.href = "https://mpago.li/1YrSsQ4";
-      })
-      .catch((error) => {
-        alert("Erro ao enviar. Tente novamente.");
-      });
-    });
-  </script>
 </body>
 </html>
