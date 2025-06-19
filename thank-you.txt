@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="1;url=https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecionando...</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #4b0082;
+      color: white;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      padding: 1rem;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00b894;
+      color: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Obrigado!</h1>
+    <p>Estamos redirecionando você para o pagamento...</p>
+    <p>Se não for redirecionado automaticamente, clique abaixo:</p>
+    <a class="button" href="https://www.mercadopago.com.br/checkout/v1/redirect?preference-id=227849621-02794f65-c92b-4acd-9fe4-a9f8f137cfd1" target="_blank">Ir para o Pagamento</a>
+  </div>
+</body>
+</html>
